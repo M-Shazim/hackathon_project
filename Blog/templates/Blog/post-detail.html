@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    {{ blog.title }}
+{% endblock %}
+
+{% block css_files %}
+    <link rel="stylesheet" href="{% static 'Blog/post_detail.css' %}">
+{% endblock %}
+
+{% block content %}
+    <h3>{{ blog.title }}</h3>
+    <p>Author: {{ blog.author }}</p>
+    <p>Published: {{ blog.date }}</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="hidden-button" name="toggle_decipher">Change text</button>
+        
+        {% if blog.decipher_mode %}
+            <p>{{ blog.content|linebreaksbr }}</p>
+            <div id="special-message">
+                <p>Congratulations! You've unlocked the full content.</p>
+            </div>
+
+            <script>
+                alert("Content deciphered!");
+            </script>
+        {% else %}
+            <p class="paragraph">{{ blog.content|linebreaksbr }}</p>
+        {% endif %}
+    </form> 
+    <script src="{% static 'Blog/string_swap.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smooth Circle Timer</title>
+    <style>
+        .progress-ring {
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+        }
+        .progress-ring__circle {
+            stroke: #4db8ff;
+            stroke-width: 5;
+            fill: transparent;
+            transition: stroke-dashoffset 1s linear; /* Smooth transition */
+        }
+        .progress-ring__background {
+            stroke: #e6e6e6;
+            stroke-width: 5;
+            fill: transparent;
+        }
+    </style>
+</head>
+<body>
+    <svg class="progress-ring" width="200" height="200">
+        <circle class="progress-ring__background"
+                stroke="#e6e6e6"
+                stroke-width="5"
+                fill="transparent"
+                r="90"
+                cx="100"
+                cy="100"/>
+        <circle class="progress-ring__circle"
+                stroke="#4db8ff"
+                stroke-width="5"
+                fill="transparent"
+                r="90"
+                cx="100"
+                cy="100"/>
+    </svg>
+    
+    <script>
+        const totalDuration = 30; // Duration in seconds
+        let elapsedTime = 0;
+        const radius = 90;
+        const circumference = 2 * Math.PI * radius;
+
+        const circle = document.querySelector('.progress-ring__circle');
+        
+        // Initialize the circle to be fully visible
+        circle.style.strokeDasharray = circumference;
+        circle.style.strokeDashoffset = 0;
+
+        function updateProgress() {
+            elapsedTime++;
+            const progress = elapsedTime / totalDuration;
+            const offset = progress * circumference;
+            circle.style.strokeDashoffset = offset;
+
+            if (elapsedTime >= totalDuration) {
+                clearInterval(timerInterval);
+            }
+        }
+
+        const timerInterval = setInterval(updateProgress, 1000); // Update every 100 ms for smoother animation
+    </script>
+</body>
+</html>

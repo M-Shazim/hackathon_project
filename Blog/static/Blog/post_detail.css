@@ -1,0 +1,125 @@
+/* CSS content for post_detail.css */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #2c3e50;
+    padding: 20px;
+    margin: 0;
+    position: relative; /* Allows for absolute positioning of button */
+}
+
+h3 {
+    font-size: 2.5em;
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid #1a73e8;
+    padding-bottom: 10px;
+}
+
+p {
+    font-size: 1.2em;
+    color: #34495e;
+    margin-bottom: 20px;
+    line-height: 1.8;
+}
+
+p.author, p.published {
+    font-size: 1em;
+    color: #7f8c8d;
+    text-align: center;
+    margin-bottom: 30px;
+    font-style: italic;
+    background: linear-gradient(120deg, #f4f4f4 50%, #ffffff 50%);
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+form {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.hidden-button {
+    position: absolute; /* Allows for random positioning */
+    background-color: black;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 10px 20px; /* Responsive padding */
+    font-size: 1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    display: inline-block; /* Prevent overflow */
+    white-space: nowrap; /* Prevent text wrapping */
+    z-index: 9999; /* Ensure it stays on top */
+}
+
+.hidden-button:hover {
+    background-color: #1a73e8;
+    color: #fff;
+}
+
+.paragraph {
+    font-size: 1.3em;
+    line-height: 1.8;
+    color: #555;
+    text-align: justify;
+    padding: 20px;
+    border-left: 5px solid #1a73e8;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 0 auto;
+    max-width: 800px;
+    position: relative;
+    overflow: hidden; /* Prevent horizontal overflow */
+}
+
+.paragraph p {
+    margin-bottom: 20px; /* Ensure spacing between paragraphs */
+}
+
+#special-message {
+    text-align: center;
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #e0f7fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 40px auto;
+}
+
+#special-message p {
+    font-size: 1.5em;
+    color: #00796b;
+    font-weight: bold;
+    margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+    h3 {
+        font-size: 2em;
+        border-bottom: 1px solid #1a73e8;
+    }
+
+    .hidden-button {
+        font-size: 0.9em;
+        padding: 8px 16px;
+    }
+
+    .paragraph {
+        font-size: 1.1em;
+        padding: 15px;
+    }
+
+    #special-message p {
+        font-size: 1.2em;
+    }
+}

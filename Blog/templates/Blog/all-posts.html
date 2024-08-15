@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    All Posts
+{% endblock  %}
+
+{% block css_files %}
+
+<link rel="stylesheet" href="{% static 'Blog/all_posts.css' %}">
+
+{% endblock %}
+
+
+{% block content %}
+    <section id="all-posts">
+        <h1>All Posts</h1>
+        <div class="post-cards">
+            {% for instance in model %}
+            <div class="card">
+                <h3><a href="{{instance.get_absolute_url}}">{{ instance.title }}</a></h3>
+                <p>{{ instance.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+{% endblock content %}
+
+
+
+{% comment %} 
+{% block content %}
+
+    <section id="all-posts">
+        <h1>All Posts</h1>
+
+        <ul>
+            {% for instance in model %}
+            
+            <h3><a href="{{instance.get_absolute_url}}">Title: {{ instance.title }}</a></h3>
+
+            <p>Description: {{ instance.description }}</p>
+                
+
+            {% endfor %}
+        </ul>
+    </section>
+
+
+{% endblock content %} {% endcomment %}

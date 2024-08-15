@@ -1,0 +1,40 @@
+{% load static %}
+
+    <link rel="stylesheet" href=" {% static "Blog/style.css" %}">
+
+
+    <section id="welcome">
+        <header>
+            <h2>Pulse's Blog</h2>
+        </header>
+        <p>Hi, welcome to our site built for the hackthon. Go ahead and smash your head with this to unlock the link!</p>
+    </section>
+
+
+    <div id="flex" class="flex">
+
+        <div id="heading">
+            <h1>
+                Pick the right door to continue
+            </h1>
+            <h2>
+                There's hint...Just start to opening!
+            </h2>
+        </div>
+
+    </div>
+
+
+    <div id="nextSection" style="display: none;">
+        Puzzle Solved Successfully OR by using Console(you noob)
+
+        <a href="{% url "all-posts-page" %}">Continue</a>
+    
+        <a href="{% url "home-page" %}">Reload Home Page</a>
+
+    </div>
+
+
+    <script src="{% static "Blog/script.js" %}"></script>
+    
+
