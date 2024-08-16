@@ -1,0 +1,53 @@
+{% load static %}
+
+
+<link rel="stylesheet" href=" {% static "Blog/quiz_style.css" %}">
+
+    <div id="buttonDiv">
+      <button id="fullscreen">Enter Full Screen</button>
+    </div>
+
+    <div id="bigContainer" style="display: none">
+      <header>
+        <p class="heading">Binary versus Qubit</p>
+
+        <svg class="progress-ring" width="200" height="200">
+          <circle
+            class="progress-ring__background"
+            stroke="#e6e6e6"
+            stroke-width="5"
+            fill="transparent"
+            r="30"
+            cx="100"
+            cy="100"
+          />
+          <circle
+            class="progress-ring__circle"
+            stroke="#4db8ff"
+            stroke-width="5"
+            fill="transparent"
+            r="30"
+            cx="100"
+            cy="100"
+          />
+        </svg>
+
+        <p id="counter">1</p>
+      </header>
+
+      <div class="content">
+        <p id="para" class="para">{{ blog.content|linebreaksbr }}</p>
+      </div>
+
+      <div class="quiz">
+        <div id="hide">
+          <button id="toggle" class="hideBtn">▼</button>
+        </div>
+        <p class="question"></p>
+        <p id="1" class="option"></p>
+        <p id="2" class="option"></p>
+        <p id="3" class="option"></p>
+        <p id="4" class="option"></p>
+      </div>
+    </div>
+    <script src="{% static "Blog/quiz_script.js" %}"></script>

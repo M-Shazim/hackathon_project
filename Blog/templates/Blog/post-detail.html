@@ -7,6 +7,71 @@
 
 {% block css_files %}
     <link rel="stylesheet" href="{% static 'Blog/post_detail.css' %}">
+    <style>
+        /* Ensure the overlay covers the entire screen */
+        .quiz-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+          backdrop-filter: blur(5px); /* Blur effect for the background */
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 1000; /* Ensure the overlay is above other content */
+          overflow: auto; /* Ensure overflow is handled */
+        }
+        
+        /* Style for the pop-up container */
+        .quiz-popup {
+          background: #fff; /* White background for the pop-up */
+          border-radius: 8px; /* Rounded corners */
+          padding: 20px;
+          width: 80%;
+          max-width: 600px; /* Adjust to fit your design */
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow effect */
+          z-index: 1001; /* Ensure the pop-up is above the overlay */
+          text-align: center; /* Center text within the pop-up */
+          box-sizing: border-box; /* Include padding and border in the element’s total width and height */
+        }
+        
+        /* Style for question and options */
+        .quiz-popup .question {
+          margin-bottom: 20px; /* Space below the question */
+          font-size: 18px; /* Adjust font size as needed */
+        }
+        
+        .quiz-popup .options-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center; /* Center options horizontally */
+        }
+        
+        .quiz-popup .option {
+          cursor: pointer;
+          padding: 10px;
+          margin: 5px 0;
+          border: 1px solid #ddd; /* Border around options */
+          border-radius: 4px; /* Rounded corners for options */
+          background-color: #f9f9f9; /* Light background for options */
+          text-align: center; /* Center text within options */
+        }
+        
+        .quiz-popup .option:hover {
+          background-color: #e0e0e0; /* Change background on hover */
+        }
+        
+        /* Style for message if no questions are available */
+        .quiz-popup .no-questions {
+          font-size: 16px;
+          color: #666;
+        }
+        
+
+
+    </style>
 {% endblock %}
 
 {% block content %}
@@ -26,7 +91,22 @@
 
             <script>
                 alert("Content deciphered!");
+                setTimeout(function() {
+                    document.querySelector('.quiz-overlay').style.display = 'flex';
+                    document.querySelector('.quiz-popup').style.display = 'flex';
+                    document.querySelector('.quiz').style.display = 'block';
+                }, 5000);
             </script>
+            <div class="quiz-overlay" style="display: none;">
+                <div class="quiz-popup" style="display: none;">
+                  <!-- Dynamic content will be inserted here -->
+                    <div class="quiz" style="display: none;"></div>
+                </div>
+              </div>
+            <script src="{% static 'Blog/quiz_script.js' %}"></script>
+              
+              
+
         {% else %}
             <p class="paragraph">{{ blog.content|linebreaksbr }}</p>
         {% endif %}

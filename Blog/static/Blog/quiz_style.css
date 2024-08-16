@@ -44,17 +44,25 @@ html, body{
     margin: 0;
     font-family: cursive;
     overflow-x: hidden;
+    scrollbar-width: none;
 }
 
 header{
     width: 100%;
-    text-align: center;
+    display: flex;
+    align-items: center;
     margin: 0;
+    height: 70px;
     padding: 10px;
     background-color: hsl(0, 0%, 5%);
     color: hsl(0, 0%, 80%);
     border-bottom: 3px solid hsl(240, 100%, 60%);
     font-size: 2.5em;
+}
+
+.heading{
+    margin: 0;
+    padding: 0;
 }
 
 .content{
@@ -71,26 +79,25 @@ header{
 #hide{
     text-align: center;
     width: 100%;
-    background-color: rgb(75, 75, 75);
+    background-color: rgb(173, 173, 173);
     margin: 0;
     cursor: pointer;
     padding: 0;
     border: none;
-    height: 25px;
+    height: 20px;
 }
 
 .hideBtn{
-    background-color: rgb(75, 75, 75);
+    background-color: rgb(173, 173, 173);
     border: none;
-    cursor: pointer;
     margin: 0;
     padding: 0;
-    translate: 0 -8px;
+    translate: 0 -12px;
     transition: transform 200ms ease-out;
 }
 
 .hide{
-    translate: 0px calc(100% - 25px);
+    translate: 0px calc(100% - 20px);
 }
 
 .rotate{
@@ -128,4 +135,87 @@ header{
     color: hsl(0, 0%, 80%);
     background: radial-gradient(circle at center, #db3300, #c7a900, #db3300);
     animation: gradientAnimation 5s infinite alternate;
+}
+
+#counter{
+    position: absolute;
+    right: calc(7% - 5px);
+    font-size: 0.9em;
+    transition: color 300ms ease-in;
+}
+
+.progress-ring {
+    position: absolute;
+    right: 0;
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+}
+.progress-ring__circle {
+    stroke: #007ccf;
+    stroke-width: 5;
+    fill: transparent;
+    transition: stroke-dashoffset 1s linear; /* Smooth transition */
+}
+.progress-ring__background {
+    stroke: #e6e6e6;
+    stroke-width: 5;
+    fill: transparent;
+}
+
+.gameEnd{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    font-size: 1.8em;
+    background: radial-gradient(circle at center, #00dbb7, #00c75a, #0071db);
+    animation: resultAnimation 3s ease-in-out infinite alternate;
+}
+
+@keyframes resultAnimation{
+    0%{
+        transform: scale(1);
+    }
+    100%{
+        transform: scale(1.5);
+    }
+}
+
+.gameOver{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    color: hsl(0, 0%, 80%);
+    font-size: 5em;
+    background: radial-gradient(circle at center, #db2c00, #c78a44, #db0000);
+    animation: resultAnimation 7s ease-in-out infinite alternate;
+}
+
+html{
+    overflow: hidden;
+    scrollbar-width: none;
+}
+
+#fullscreen{
+    border: none;
+    background-color: rgb(0, 172, 0);
+    color: white;
+    font-size: 1.3em;
+    padding: 10px 20px;
+    text-align: center;
+    margin: 25%;
+    border-radius: 50px;
+    box-shadow: 0 0 7px whitesmoke;
+    cursor: pointer;
+}
+
+#buttonDiv{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
